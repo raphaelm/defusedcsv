@@ -5,7 +5,7 @@ before_script:
 script:
   - isort -rc -c tests defusedcsv
   - flake8 tests defusedcsv
-  - coverage py.test tests
+  - coverage run -m py.test tests && codecov
 matrix:
   include:
     - python: 3.4
