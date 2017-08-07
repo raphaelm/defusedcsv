@@ -23,10 +23,10 @@ class ProxyWriter:
         self.writer = writer
 
     def writerow(self, row):
-        self.writer.writerow(map(escape, row))
+        self.writer.writerow([escape(field) for field in row])
 
     def writerows(self, rows):
-        self.writer.writerows([map(escape, row) for row in rows])
+        self.writer.writerows([[escape(field) for field in row] for row in rows])
 
     def __getattr__(self, item):
         return getattr(self.writer, item)
