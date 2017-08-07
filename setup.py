@@ -13,7 +13,7 @@ except:
     long_description = ''
 
 try:
-    from i18nfield import version
+    from defusedcsv import version
 except ImportError:
     version = '?'
 
