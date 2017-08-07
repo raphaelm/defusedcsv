@@ -12,7 +12,11 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
 
 
 def escape(payload):
-    if payload[0] in ('@', '+', '-', '=', '|', '%'):
+    if payload is None:
+        return ''
+
+    payload = str(payload)
+    if payload and payload[0] in ('@', '+', '-', '=', '|', '%'):
         payload = payload.replace("|", "\|")
         payload = "'" + payload
     return payload

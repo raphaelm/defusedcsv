@@ -40,6 +40,11 @@ def test_dangerous_sample_payloads(input, expected):
     "foo@example.org",
     "19.00 %",
     "Test | Foo",
+    "",
+    None,
+    1,
+    2,
+    True
 ])
 def test_safe_sample_payloads(input):
-    assert escape(input) == input
+    assert escape(input) == (str(input) if input is not None else '')
