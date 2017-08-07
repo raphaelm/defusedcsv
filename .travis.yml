@@ -1,6 +1,10 @@
 language: python
 sudo: false
+before_script:
+  - pip install -r requirements_dev.txt
 script:
+  - isort -rc -c tests defusedcsv
+  - flake8 tests defusedcsv
   - coverage py.test tests
 matrix:
   include:
