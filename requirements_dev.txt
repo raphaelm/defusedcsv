@@ -1,0 +1,6 @@
+pytest
+tox
+coverage
+codecov
+isort
+flake8
