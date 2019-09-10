@@ -1,10 +1,10 @@
+import re
 from csv import (
     QUOTE_ALL, QUOTE_MINIMAL, QUOTE_NONE, QUOTE_NONNUMERIC, Dialect,
     DictReader, DictWriter as BaseDictWriter, Error, Sniffer, excel, excel_tab,
     field_size_limit, get_dialect, list_dialects, reader, register_dialect,
     unix_dialect, unregister_dialect, writer as basewriter,
 )
-import re
 
 __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "Error", "Dialect", "excel", "excel_tab", "field_size_limit", "reader", "writer",
