@@ -17,8 +17,8 @@ def escape(payload):
         return ''
 
     payload = str(payload)
-    if payload and payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\.]+$", payload):
-        payload = payload.replace("|", "\|")
+    if payload and payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\\.]+$", payload):
+        payload = payload.replace("|", "\\|")
         payload = "'" + payload
     return payload
 
