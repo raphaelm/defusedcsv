@@ -4,6 +4,7 @@ from csv import (
     field_size_limit, get_dialect, list_dialects, reader, register_dialect,
     unix_dialect, unregister_dialect, writer as basewriter,
 )
+import re
 
 __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "Error", "Dialect", "excel", "excel_tab", "field_size_limit", "reader", "writer",
@@ -16,7 +17,7 @@ def escape(payload):
         return ''
 
     payload = str(payload)
-    if payload and payload[0] in ('@', '+', '-', '=', '|', '%'):
+    if payload and payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\.]+$", payload):
         payload = payload.replace("|", "\|")
         payload = "'" + payload
     return payload

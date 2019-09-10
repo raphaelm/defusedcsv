@@ -34,6 +34,8 @@ def test_dangerous_sample_payloads(input, expected):
     "Foo",
     "1.3",
     "1,2",
+    "-1.3",
+    "-1,2",
     "Foo Bar",
     "1-2",
     "1=3",
