@@ -27,6 +27,11 @@ Usage
 This library acts as a drop-in replacement for the standard library's ``csv`` module. You can use it by just replacing
 ``import csv`` with ``from defusedcsv import csv`` in your code.
 
+Development
+-----------
+
+Instsall ``poetry`` with ``pip``. Create a virtualenv with ``poetry install``. Use the dev tools as usual.
+
 Useful Links
 ------------
 
