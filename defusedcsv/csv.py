@@ -12,37 +12,40 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "unregister_dialect", "DictReader", "DictWriter", "unix_dialect"]
 
 
-def escape(payload):
+def escape(payload, assert_injection=False):
     if payload is None:
         return ''
 
     payload = str(payload)
     if payload and payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\\.]+$", payload):
+        if assert_injection is True:
+            raise Error('The payload which shall be written is dangerous (CSV injection).')
         payload = payload.replace("|", "\\|")
         payload = "'" + payload
     return payload
 
 
 class ProxyWriter:
-    def __init__(self, writer):
+    def __init__(self, writer, assert_injection):
         self.writer = writer
+        self.assert_injection = assert_injection
 
     def writerow(self, row):
-        self.writer.writerow([escape(field) for field in row])
+        self.writer.writerow([escape(field, self.assert_injection) for field in row])
 
     def writerows(self, rows):
-        self.writer.writerows([[escape(field) for field in row] for row in rows])
+        self.writer.writerows([[escape(field, self.assert_injection) for field in row] for row in rows])
 
     def __getattr__(self, item):
         return getattr(self.writer, item)
 
 
-def writer(csvfile, dialect='excel', **fmtparams):
-    return ProxyWriter(basewriter(csvfile, dialect, **fmtparams))
+def writer(csvfile, assert_injection=False, dialect='excel', **fmtparams):
+    return ProxyWriter(basewriter(csvfile, dialect, **fmtparams), assert_injection)
 
 
 class DictWriter(BaseDictWriter):
     def __init__(self, f, fieldnames, restval="", extrasaction="raise",
-                 dialect="excel", *args, **kwds):
+                 dialect="excel", assert_injection=False, *args, **kwds):
         super().__init__(f, fieldnames, restval, extrasaction, dialect, *args, **kwds)
-        self.writer = writer(f, dialect, **kwds)
+        self.writer = writer(f, assert_injection, dialect, **kwds)
