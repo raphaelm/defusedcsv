@@ -1,9 +1,9 @@
 import re
 from csv import (
     QUOTE_ALL, QUOTE_MINIMAL, QUOTE_NONE, QUOTE_NONNUMERIC, Dialect,
-    DictReader, DictWriter as BaseDictWriter, Error, Sniffer, excel, excel_tab,
+    DictReader, DictWriter as _BaseDictWriter, Error, Sniffer, excel, excel_tab,
     field_size_limit, get_dialect, list_dialects, reader, register_dialect,
-    unix_dialect, unregister_dialect, writer as basewriter,
+    unix_dialect, unregister_dialect, writer as _basewriter,
     __doc__,
 )
 
@@ -28,7 +28,7 @@ def escape(payload):
     return payload
 
 
-class ProxyWriter:
+class _ProxyWriter:
     def __init__(self, writer):
         self.writer = writer
 
@@ -43,10 +43,10 @@ class ProxyWriter:
 
 
 def writer(csvfile, dialect='excel', **fmtparams):
-    return ProxyWriter(basewriter(csvfile, dialect, **fmtparams))
+    return _ProxyWriter(_basewriter(csvfile, dialect, **fmtparams))
 
 
-class DictWriter(BaseDictWriter):
+class DictWriter(_BaseDictWriter):
     def __init__(self, f, fieldnames, restval="", extrasaction="raise",
                  dialect="excel", *args, **kwds):
         super().__init__(f, fieldnames, restval, extrasaction, dialect, *args, **kwds)
