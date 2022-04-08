@@ -6,6 +6,7 @@ from csv import (
     unix_dialect, unregister_dialect, writer as _basewriter,
     __doc__,
 )
+from numbers import Number
 
 from . import version as __version__
 
@@ -20,6 +21,8 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
 def escape(payload):
     if payload is None:
         return ''
+    if isinstance(payload, Number):
+        return payload
 
     payload = str(payload)
     if payload and payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\\.]+$", payload):
@@ -33,10 +36,10 @@ class _ProxyWriter:
         self.writer = writer
 
     def writerow(self, row):
-        self.writer.writerow([escape(field) for field in row])
+        return self.writer.writerow([escape(field) for field in row])
 
     def writerows(self, rows):
-        self.writer.writerows([[escape(field) for field in row] for row in rows])
+        return self.writer.writerows([[escape(field) for field in row] for row in rows])
 
     def __getattr__(self, item):
         return getattr(self.writer, item)

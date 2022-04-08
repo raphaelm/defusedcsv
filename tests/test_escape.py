@@ -44,9 +44,14 @@ def test_dangerous_sample_payloads(input, expected):
     "Test | Foo",
     "",
     None,
+])
+def test_safe_sample_payloads(input):
+    assert escape(input) == (str(input) if input is not None else '')
+
+@pytest.mark.parametrize("input", [
     1,
     2,
     True
 ])
-def test_safe_sample_payloads(input):
-    assert escape(input) == (str(input) if input is not None else '')
+def test_safe_nonstr_sample_payloads(input):
+    assert escape(input) == input
