@@ -30,9 +30,9 @@ This library acts as a drop-in replacement for the standard library's ``csv`` mo
 Useful Links
 ------------
 
-* https://www.owasp.org/index.php/CSV_Excel_Macro_Injection
-* https://www.contextis.com/resources/blog/comma-separated-vulnerabilities/
-* https://blog.zsec.uk/csv-dangers-mitigations/
+* `CSV Injection Software Attack | OWASP Foundation <https://owasp.org/www-community/attacks/CSV_Injection>`_
+* `Comma Separated Vulnerabilities | Context Information Security <https://www.contextis.com/resources/blog/comma-separated-vulnerabilities/>`_
+* `CSV Injection Mitigations & Dangers | ZeroSec - Adventures In Information Security <https://blog.zsec.uk/csv-dangers-mitigations/>`_
 
 License
 -------
