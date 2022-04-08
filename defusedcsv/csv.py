@@ -36,6 +36,11 @@ class _ProxyWriter:
         self.writer = writer
 
     def writerow(self, row):
+        try:
+            iter(row)
+        except TypeError as err:
+            msg = "iterable expected, not %s" % type(row).__name__
+            raise Error(msg) from err
         return self.writer.writerow([escape(field) for field in row])
 
     def writerows(self, rows):
