@@ -1,5 +1,5 @@
 import pytest
-from defusedcsv.csv import escape
+from defusedcsv.csv import _escape as escape
 
 
 @pytest.mark.parametrize("input,expected", [

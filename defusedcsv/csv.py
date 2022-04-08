@@ -18,7 +18,7 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "unix_dialect"]
 
 
-def escape(payload):
+def _escape(payload):
     if payload is None:
         return ''
     if isinstance(payload, Number):
@@ -41,10 +41,10 @@ class _ProxyWriter:
         except TypeError as err:
             msg = "iterable expected, not %s" % type(row).__name__
             raise Error(msg) from err
-        return self.writer.writerow([escape(field) for field in row])
+        return self.writer.writerow([_escape(field) for field in row])
 
     def writerows(self, rows):
-        return self.writer.writerows([[escape(field) for field in row] for row in rows])
+        return self.writer.writerows([[_escape(field) for field in row] for row in rows])
 
     def __getattr__(self, item):
         return getattr(self.writer, item)
