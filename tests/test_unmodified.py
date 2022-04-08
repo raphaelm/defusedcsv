@@ -32,6 +32,9 @@ def test_has_attributes():
     assert hasattr(csv, 'QUOTE_NONNUMERIC')
     assert hasattr(csv, 'QUOTE_NONE')
     assert hasattr(csv, 'Error')
+    assert hasattr(csv, 'writer')
+    assert hasattr(csv, '__doc__')
+    assert hasattr(csv, '__version__')
 
 
 def test_dialect_registry():

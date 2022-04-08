@@ -4,12 +4,17 @@ from csv import (
     DictReader, DictWriter as BaseDictWriter, Error, Sniffer, excel, excel_tab,
     field_size_limit, get_dialect, list_dialects, reader, register_dialect,
     unix_dialect, unregister_dialect, writer as basewriter,
+    __doc__,
 )
 
+from . import version as __version__
+
 __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
-           "Error", "Dialect", "excel", "excel_tab", "field_size_limit", "reader", "writer",
+           "Error", "Dialect", "__doc__", "excel", "excel_tab",
+           "field_size_limit", "reader", "writer",
            "register_dialect", "get_dialect", "list_dialects", "Sniffer",
-           "unregister_dialect", "DictReader", "DictWriter", "unix_dialect"]
+           "unregister_dialect", "__version__", "DictReader", "DictWriter",
+           "unix_dialect"]
 
 
 def escape(payload):
