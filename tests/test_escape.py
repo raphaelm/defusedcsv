@@ -1,4 +1,5 @@
 import pytest
+
 from defusedcsv.csv import _escape as escape
 
 
@@ -47,6 +48,7 @@ def test_dangerous_sample_payloads(input, expected):
 ])
 def test_safe_sample_payloads(input):
     assert escape(input) == (str(input) if input is not None else '')
+
 
 @pytest.mark.parametrize("input", [
     1,

@@ -1,6 +1,5 @@
 from codecs import open
 from os import path
-
 from setuptools import find_packages, setup
 
 here = path.abspath(path.dirname(__file__))
@@ -9,7 +8,7 @@ here = path.abspath(path.dirname(__file__))
 try:
     with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
         long_description = f.read()
-except:
+except Exception:
     long_description = ''
 
 try:

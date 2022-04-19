@@ -1,10 +1,9 @@
 import re
 from csv import (
     QUOTE_ALL, QUOTE_MINIMAL, QUOTE_NONE, QUOTE_NONNUMERIC, Dialect,
-    DictReader, DictWriter as _BaseDictWriter, Error, Sniffer, excel, excel_tab,
-    field_size_limit, get_dialect, list_dialects, reader, register_dialect,
-    unix_dialect, unregister_dialect, writer as _basewriter,
-    __doc__,
+    DictReader, DictWriter as _BaseDictWriter, Error, Sniffer, __doc__, excel,
+    excel_tab, field_size_limit, get_dialect, list_dialects, reader,
+    register_dialect, unix_dialect, unregister_dialect, writer as _basewriter,
 )
 from numbers import Number
 
