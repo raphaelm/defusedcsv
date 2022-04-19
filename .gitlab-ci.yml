@@ -6,7 +6,7 @@ pypi:
         - XDG_CACHE_HOME=/cache pip3 install -U pip setuptools wheel
         - XDG_CACHE_HOME=/cache pip3 install -r requirements_dev.txt
         - python setup.py develop
-        - python setup.py sdist bdisth_wheel
+        - python setup.py sdist bdist_wheel
         - twine upload dist/*
     tags:
         - python3
