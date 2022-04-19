@@ -4,3 +4,4 @@ coverage
 codecov
 isort
 flake8
+twine
