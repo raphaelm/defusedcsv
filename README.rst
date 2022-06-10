@@ -31,12 +31,12 @@ Useful Links
 ------------
 
 * `CSV Injection Software Attack | OWASP Foundation <https://owasp.org/www-community/attacks/CSV_Injection>`_
-* `Comma Separated Vulnerabilities | Context Information Security <https://www.contextis.com/resources/blog/comma-separated-vulnerabilities/>`_
+* `Comma Separated Vulnerabilities | Context Information Security <https://web.archive.org/web/20220516052229/https://www.contextis.com/us/blog/comma-separated-vulnerabilities>`_
 * `CSV Injection Mitigations & Dangers | ZeroSec - Adventures In Information Security <https://blog.zsec.uk/csv-dangers-mitigations/>`_
 
 License
 -------
-The code in this repository is published under the terms of the Apache License. 
+The code in this repository is published under the terms of the Apache License.
 See the LICENSE file for the complete license text.
 
 This project is maintained by Raphael Michel <mail@raphaelmichel.de>. See the
