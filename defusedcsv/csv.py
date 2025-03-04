@@ -27,7 +27,7 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
 
 def _escape(payload):
     if payload is None:
-        return ''
+        return payload
     if isinstance(payload, Number):
         return payload
 
