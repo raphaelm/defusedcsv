@@ -19,7 +19,7 @@ This library tries to mitigate that by prepending all cells starting with ``@``,
 ``|`` characters in these cells with ``\|``. This will of course change the resulting
 CSV files, but Excel will not display the ``'`` character to the user.
 
-Tested with Python 3.8 to 3.10.
+Tested with Python 3.9 to 3.13.
 
 Usage
 -----
