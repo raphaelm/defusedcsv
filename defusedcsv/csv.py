@@ -65,7 +65,7 @@ class _ProxyWriter:
         return getattr(self.writer, item)
 
 
-def writer(csvfile: "io.TextIOBase", dialect='excel', **fmtparams):
+def writer(csvfile: "io.TextIOBase", /, dialect='excel', **fmtparams):
     return _ProxyWriter(_basewriter(csvfile, dialect, **fmtparams))
 
 
