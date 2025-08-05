@@ -39,11 +39,11 @@ def _escape(payload: T) -> None | Number | str:
     if isinstance(payload, Number):
         return payload
 
-    payload = str(payload)
-    if payload and payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\\.]+$", payload):
-        payload = payload.replace("|", "\\|")
-        payload = "'" + payload
-    return payload
+    str_payload = str(payload)
+    if str_payload and str_payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\\.]+$", str_payload):
+        str_payload = str_payload.replace("|", "\\|")
+        str_payload = "'" + str_payload
+    return str_payload
 
 
 class _ProxyWriter:
