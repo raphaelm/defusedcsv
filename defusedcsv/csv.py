@@ -33,7 +33,7 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
 T = TypeVar("T")
 
 
-def _escape(payload: T) -> None | Number | str:
+def _escape(payload: T) -> "None | Number | str":
     if payload is None:
         return payload
     if isinstance(payload, Number):
