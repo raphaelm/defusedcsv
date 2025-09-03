@@ -56,7 +56,7 @@ class _ProxyWriter:
             raise Error(msg) from err
         return self.writer.writerow(_escape(field) for field in row)
 
-    def writerows(self, rows: "Iterable[Iterable[Any]]"):
+    def writerows(self, rows: "Iterable[Iterable[Any]]") -> None:
         return self.writer.writerows((_escape(field) for field in row) for row in rows)
 
     def __getattr__(self, item: str):
