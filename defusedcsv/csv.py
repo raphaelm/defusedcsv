@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any
 
 import re
 from csv import (
@@ -30,10 +30,8 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "unregister_dialect", "__version__", "DictReader", "DictWriter",
            "unix_dialect"]
 
-T = TypeVar("T")
 
-
-def _escape(payload: T) -> "None | Number | str":
+def _escape(payload: Any) -> "None | Number | str":
     if payload is None:
         return payload
     if isinstance(payload, Number):
