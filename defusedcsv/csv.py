@@ -31,6 +31,10 @@ __all__ = ["QUOTE_MINIMAL", "QUOTE_ALL", "QUOTE_NONNUMERIC", "QUOTE_NONE",
            "unix_dialect"]
 
 
+# OWASP also lists TAB, CR and LF, plus full-width variants that some locales (e.g. Japanese) evaluate as formulas.
+_DANGEROUS_PREFIXES = ('@', '+', '-', '=', '|', '%', '\t', '\r', '\n', '\uff1d', '\uff0b', '\uff0d', '\uff20')
+
+
 def _escape(payload: Any) -> "None | Number | str":
     if payload is None:
         return payload
@@ -38,7 +42,7 @@ def _escape(payload: Any) -> "None | Number | str":
         return payload
 
     str_payload = str(payload)
-    if str_payload and str_payload[0] in ('@', '+', '-', '=', '|', '%') and not re.match("^-?[0-9,\\.]+$", str_payload):
+    if str_payload and str_payload[0] in _DANGEROUS_PREFIXES and not re.match("^-?[0-9,\\.]+$", str_payload):
         str_payload = str_payload.replace("|", "\\|")
         str_payload = "'" + str_payload
     return str_payload
