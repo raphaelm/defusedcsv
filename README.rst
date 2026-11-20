@@ -15,7 +15,8 @@ payloads that might trigger vulnerabilities in the spreadsheet software of the u
 Excel or LibreOffice).
 
 This library tries to mitigate that by prepending all cells starting with ``@``, ``+``,
-``-``, ``=``, ``|`` or ``%`` with an apostrophe ``'`` and additionally replacing all
+``-``, ``=``, ``|``, ``%``, a tab, a carriage return, a line feed, or one of the full-width
+variants ``＝``, ``＋``, ``－`` or ``＠`` with an apostrophe ``'`` and additionally replacing all
 ``|`` characters in these cells with ``\|``. This will of course change the resulting
 CSV files, but Excel will not display the ``'`` character to the user.
 
